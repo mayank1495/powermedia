@@ -445,37 +445,75 @@
 
       <!-- ============ HOW IT WORKS ============ -->
       <section id="how" class="container-x py-8 lg:py-12">
-        <div class="reveal-stage rounded-xl bg-surface p-8 sm:p-12 lg:p-14">
-          <div data-reveal class="max-w-xl">
+        <div class="reveal-stage grid gap-10 rounded-xl bg-surface p-8 sm:p-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16 lg:p-14">
+          <!-- Left: intro + reassurances -->
+          <div data-reveal class="lg:sticky lg:top-28 lg:self-start">
             <h2 class="font-display text-[clamp(1.85rem,4vw,2.6rem)] font-light leading-[0.98] tracking-tightest text-ink">
-              Shipping, in three moves
+              From your door<br class="hidden sm:block" /> to delivered
             </h2>
-            <p class="mt-4 text-lg text-ink-muted">Simple as 1, 2, 3, and you can watch every step.</p>
+            <p class="mt-4 max-w-md text-lg text-ink-muted">
+              Four steps, fully tracked — book in minutes, then watch it move the whole way. No chasing, no guesswork.
+            </p>
+
+            <ul class="mt-8 grid max-w-md gap-x-6 gap-y-3 sm:grid-cols-2">
+              <li class="flex items-center gap-2.5 text-sm text-ink-muted">
+                <svg class="h-4 w-4 shrink-0 text-teal" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m4 12 5 5L20 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Door-to-door pickup
+              </li>
+              <li class="flex items-center gap-2.5 text-sm text-ink-muted">
+                <svg class="h-4 w-4 shrink-0 text-teal" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m4 12 5 5L20 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Insured in transit
+              </li>
+              <li class="flex items-center gap-2.5 text-sm text-ink-muted">
+                <svg class="h-4 w-4 shrink-0 text-teal" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m4 12 5 5L20 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Updates at every step
+              </li>
+              <li class="flex items-center gap-2.5 text-sm text-ink-muted">
+                <svg class="h-4 w-4 shrink-0 text-teal" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m4 12 5 5L20 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Open 365 days a year
+              </li>
+            </ul>
+
+            <a href="#contact" class="btn-primary mt-9 h-11 text-sm">Book a pickup</a>
           </div>
 
-          <ol class="mt-10 grid gap-8 md:grid-cols-3">
+          <!-- Right: vertical timeline -->
+          <ol class="relative ml-4 space-y-9 border-l border-night/12 pl-9 sm:pl-10">
             <li data-reveal class="relative">
-              <div class="flex items-center gap-4">
-                <span class="font-display text-4xl font-light text-brand-ink">01</span>
-                <span class="h-px flex-1 bg-night/10 md:hidden"></span>
-              </div>
-              <h3 class="mt-4 font-display text-xl font-light tracking-tight text-ink">Book a pickup</h3>
-              <p class="mt-2 text-ink-muted">Call us or drop your details. Tell us what's moving and where it's going.</p>
+              <span class="absolute -left-9 top-0 grid h-9 w-9 -translate-x-1/2 place-items-center rounded-full bg-surface text-brand-ink ring-1 ring-night/10 shadow-subtle sm:-left-10">
+                <svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h3l1.4 3.8-2 1.4a11 11 0 0 0 5 5l1.4-2 3.8 1.4V20a1 1 0 0 1-1.1 1A15.5 15.5 0 0 1 4 5.1 1 1 0 0 1 5 4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              </span>
+              <p class="font-mono text-[0.7rem] uppercase tracking-[0.22em] text-ink-muted/70">Step 01</p>
+              <h3 class="mt-1.5 font-display text-xl font-light tracking-tight text-ink">Book a pickup</h3>
+              <p class="mt-2 max-w-md text-ink-muted">Call us or share your details — tell us what's moving and where it's headed. We confirm rates and a pickup slot.</p>
+              <span class="mt-3 inline-flex items-center gap-1.5 rounded-full bg-night/[0.04] px-2.5 py-1 font-mono text-[0.7rem] text-ink-muted">~15 min to book</span>
             </li>
             <li data-reveal style="--reveal-delay: 110ms" class="relative">
-              <div class="flex items-center gap-4">
-                <span class="font-display text-4xl font-light text-brand-ink">02</span>
-                <span class="h-px flex-1 bg-night/10 md:hidden"></span>
-              </div>
-              <h3 class="mt-4 font-display text-xl font-light tracking-tight text-ink">We collect &amp; dispatch</h3>
-              <p class="mt-2 text-ink-muted">Our rider picks it up and routes it by the fastest lane, air or road.</p>
+              <span class="absolute -left-9 top-0 grid h-9 w-9 -translate-x-1/2 place-items-center rounded-full bg-surface text-brand-ink ring-1 ring-night/10 shadow-subtle sm:-left-10">
+                <svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m12 3 8 4-8 4-8-4 8-4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M4 7v10l8 4 8-4V7" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 11v10" stroke="currentColor" stroke-width="1.6"/></svg>
+              </span>
+              <p class="font-mono text-[0.7rem] uppercase tracking-[0.22em] text-ink-muted/70">Step 02</p>
+              <h3 class="mt-1.5 font-display text-xl font-light tracking-tight text-ink">We collect from your door</h3>
+              <p class="mt-2 max-w-md text-ink-muted">Our rider comes to you, checks the contents and packs it to survive the journey — no trips to a counter.</p>
+              <span class="mt-3 inline-flex items-center gap-1.5 rounded-full bg-night/[0.04] px-2.5 py-1 font-mono text-[0.7rem] text-ink-muted">Door-to-door</span>
             </li>
             <li data-reveal style="--reveal-delay: 220ms" class="relative">
-              <div class="flex items-center gap-4">
-                <span class="font-display text-4xl font-light text-brand-ink">03</span>
-              </div>
-              <h3 class="mt-4 font-display text-xl font-light tracking-tight text-ink">Track to the door</h3>
-              <p class="mt-2 text-ink-muted">Follow it in real time with your tracking ID until it's safely delivered.</p>
+              <span class="absolute -left-9 top-0 grid h-9 w-9 -translate-x-1/2 place-items-center rounded-full bg-surface text-brand-ink ring-1 ring-night/10 shadow-subtle sm:-left-10">
+                <svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 16 3 11l1.5-2 7 1 4-6 2 .6-2.4 6L19 12l2 .8a1.4 1.4 0 0 1 0 2.6Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M5 20h11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </span>
+              <p class="font-mono text-[0.7rem] uppercase tracking-[0.22em] text-ink-muted/70">Step 03</p>
+              <h3 class="mt-1.5 font-display text-xl font-light tracking-tight text-ink">Fastest lane — air or road</h3>
+              <p class="mt-2 max-w-md text-ink-muted">We route it the quickest way across India or overseas, handling every transfer and customs step in between.</p>
+              <span class="mt-3 inline-flex items-center gap-1.5 rounded-full bg-night/[0.04] px-2.5 py-1 font-mono text-[0.7rem] text-ink-muted">Air or road</span>
+            </li>
+            <li data-reveal style="--reveal-delay: 330ms" class="relative">
+              <span class="absolute -left-9 top-0 grid h-9 w-9 -translate-x-1/2 place-items-center rounded-full bg-brand text-white ring-1 ring-brand/30 shadow-subtle sm:-left-10">
+                <svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3 5 5.6V11c0 4.4 2.9 7.4 7 8.8 4.1-1.4 7-4.4 7-8.8V5.6L12 3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m9 11.5 2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <p class="font-mono text-[0.7rem] uppercase tracking-[0.22em] text-brand">Step 04</p>
+              <h3 class="mt-1.5 font-display text-xl font-light tracking-tight text-ink">Delivered, with proof</h3>
+              <p class="mt-2 max-w-md text-ink-muted">It reaches the recipient safely and you get a signed confirmation — so you always know it landed.</p>
+              <span class="mt-3 inline-flex items-center gap-1.5 rounded-full bg-brand-soft px-2.5 py-1 font-mono text-[0.7rem] text-brand-ink">Signed e-POD</span>
             </li>
           </ol>
         </div>
