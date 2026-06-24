@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Power Media">
+  <rect width="32" height="32" rx="7" fill="#15171c" />
+  <g fill="#ff5c5c" transform="translate(4 5) scale(0.857)">
+    <path d="M9 1.5h12l-7 9.5H2z" />
+    <path d="M16 13h12l-7 9.5H9z" />
+  </g>
+</svg>

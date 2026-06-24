@@ -1,0 +1,11 @@
+node_modules/
+.shots/
+.dev-server.js
+.shoot.js
+.probe.js
+.sheet.js
+.shot-*.png
+.probe-sheet.png
+.impeccable/
+*.log
+.DS_Store

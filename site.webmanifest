@@ -1,0 +1,21 @@
+{
+  "name": "Power Media Systems & Services",
+  "short_name": "Power Media",
+  "description": "Courier and logistics by air and road across India and worldwide.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#15171c",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

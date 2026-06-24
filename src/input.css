@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Coral logo identity — OKLCH channel triplets (L C H) so Tailwind
+       alpha modifiers like bg-night/10 resolve through oklch(... / <alpha>) */
+    --c-brand: 0.7 0.197 25;
+    --c-brand-ink: 0.55 0.17 25;
+    --c-brand-soft: 0.955 0.032 32;
+    --c-brand-glow: oklch(0.7 0.197 25 / 0.38);
+
+    --c-bg: 1 0 0;
+    --c-surface: 0.975 0.004 60;
+    --c-ink: 0.21 0.014 52;
+    --c-muted: 0.46 0.014 52;
+
+    --c-night: 0.18 0.012 52;
+    --c-night-soft: 0.235 0.013 52;
+    --c-night-line: 0.32 0.012 52;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    background-color: oklch(var(--c-bg));
+    color: oklch(var(--c-ink));
+    font-family: "Hanken Grotesk", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3 {
+    font-family: "Archivo", system-ui, sans-serif;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background-color: oklch(var(--c-brand));
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 3px solid oklch(var(--c-brand));
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-content px-5 sm:px-8;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-tight transition duration-300 ease-out-expo;
+  }
+
+  .btn-primary {
+    @apply btn bg-brand px-7 py-3.5 text-white shadow-glow hover:-translate-y-0.5 hover:bg-brand-ink;
+  }
+
+  .btn-dark {
+    @apply btn bg-night px-7 py-3.5 text-white hover:-translate-y-0.5 hover:bg-night-soft;
+  }
+
+  .btn-ghost {
+    @apply btn border border-night/20 px-7 py-3.5 text-ink hover:-translate-y-0.5 hover:border-night/40;
+  }
+
+  .eyebrow-mark {
+    @apply inline-flex items-center gap-2.5 text-sm font-semibold text-brand-ink;
+  }
+
+  .field {
+    @apply w-full rounded-2xl border border-night/10 bg-white px-5 py-4 text-ink placeholder:text-ink-muted/70 transition focus:border-brand focus:outline-none focus:ring-4 focus:ring-brand/20;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Faded grid backdrop for the hero */
+  .hero-grid {
+    background-image:
+      linear-gradient(to right, oklch(0.45 0.03 40 / 0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, oklch(0.45 0.03 40 / 0.08) 1px, transparent 1px);
+    background-size: 54px 54px;
+    background-position: 0 0;
+    -webkit-mask-image: radial-gradient(115% 85% at 50% 0%, #000 0%, #000 38%, transparent 78%);
+    mask-image: radial-gradient(115% 85% at 50% 0%, #000 0%, #000 38%, transparent 78%);
+    animation: grid-drift 7s linear infinite;
+  }
+
+  @keyframes grid-drift {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 54px 54px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-grid {
+      animation: none;
+    }
+  }
+
+  /* Scroll reveal: content is visible by default; JS opts into the hidden start state */
+  .reveal-ready [data-reveal] {
+    opacity: 0;
+    transform: translateY(26px);
+    will-change: opacity, transform;
+  }
+
+  .reveal-ready [data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-ready [data-reveal],
+    .reveal-ready [data-reveal].is-in {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+    .animate-marquee {
+      animation: none !important;
+    }
+  }
+}

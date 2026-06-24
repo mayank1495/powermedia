@@ -1,0 +1,14 @@
+{
+  "name": "powermedia",
+  "version": "1.0.0",
+  "description": "Power Media Systems and Services — courier & logistics landing page",
+  "private": true,
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/input.css -o ./resources/css/tailwind.css --minify",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./resources/css/tailwind.css --watch",
+    "dev": "npm run watch:css"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}
