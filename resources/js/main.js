@@ -9,28 +9,34 @@
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-  /* ---------- Sticky nav condense ---------- */
-  const navShell = document.getElementById("nav-shell");
-  const stuckClasses = [
-    "border-night/10",
-    "bg-white/80",
-    "shadow-lift",
+  /* ---------- Sticky nav: solid-on-scroll + hide-on-scroll-down ---------- */
+  const header = document.getElementById("site-header");
+  const solidClasses = [
+    "bg-white/85",
     "backdrop-blur-md",
+    "border-night/10",
+    "shadow-[0_6px_24px_-16px_rgba(17,26,74,0.3)]",
   ];
+  let lastY = window.scrollY;
   let ticking = false;
-  const render = () => {
+  const renderNav = () => {
     ticking = false;
-    if (!navShell) return;
-    const stuck = window.scrollY > 12;
-    navShell.classList.toggle("py-2", stuck);
-    stuckClasses.forEach((c) => navShell.classList.toggle(c, stuck));
+    if (!header) return;
+    const y = window.scrollY;
+    const scrolled = y > 8;
+    solidClasses.forEach((c) => header.classList.toggle(c, scrolled));
+    const goingDown = y > lastY + 2 && y > 160;
+    const goingUp = y < lastY - 2;
+    if (goingDown) header.classList.add("-translate-y-full");
+    else if (goingUp || y <= 160) header.classList.remove("-translate-y-full");
+    lastY = y;
   };
   const onScroll = () => {
     if (ticking) return;
     ticking = true;
-    requestAnimationFrame(render);
+    requestAnimationFrame(renderNav);
   };
-  render();
+  renderNav();
   window.addEventListener("scroll", onScroll, { passive: true });
 
   /* ---------- Mobile menu ---------- */
@@ -53,6 +59,32 @@
     });
   }
 
+  /* ---------- Hero shipment card: varied sample on each visit ---------- */
+  const shipDest = document.getElementById("ship-dest");
+  if (shipDest) {
+    const samples = [
+      { dest: "London, UK",    eta: "2 days", mode: "Air freight", svc: "Intl Express",   kg: "2.4",  status: "In transit" },
+      { dest: "Dubai, AE",     eta: "36 hrs", mode: "Air freight", svc: "Intl Express",   kg: "5.1",  status: "In transit" },
+      { dest: "Singapore, SG", eta: "3 days", mode: "Air freight", svc: "Intl Priority",  kg: "1.2",  status: "Booked" },
+      { dest: "New York, US",  eta: "4 days", mode: "Air freight", svc: "Intl Express",   kg: "8.6",  status: "In transit" },
+      { dest: "Mumbai, IN",    eta: "today",  mode: "Air + road",  svc: "TDD Express",    kg: "3.7",  status: "Out for delivery" },
+      { dest: "New Delhi, IN", eta: "today",  mode: "By air",      svc: "TDD Express",    kg: "0.8",  status: "In transit" },
+      { dest: "Bengaluru, IN", eta: "1 day",  mode: "By air",      svc: "TDD Express",    kg: "12.0", status: "In transit" },
+      { dest: "Chennai, IN",   eta: "1 day",  mode: "Surface",     svc: "Cargo",          kg: "24.5", status: "Picked up" },
+    ];
+    const s = samples[Math.floor(Math.random() * samples.length)];
+    const id = "PM-" + (10000 + Math.floor(Math.random() * 89999)) + "-IN";
+    const set = (k, v) => { const el = document.getElementById(k); if (el) el.textContent = v; };
+    set("ship-dest", s.dest);
+    set("ship-dest-note", "Destination · ETA " + s.eta);
+    set("ship-status", s.status);
+    set("ship-mode", s.mode);
+    set("ship-track", id);
+    set("ship-svc", s.svc);
+    set("ship-weight", s.kg);
+    set("ship-eta", s.eta);
+  }
+
   /* ---------- Scroll reveals ---------- */
   const revealEls = document.querySelectorAll("[data-reveal]");
   if (!prefersReduced && "IntersectionObserver" in window && revealEls.length) {
@@ -72,61 +104,65 @@
     revealEls.forEach((el) => io.observe(el));
   }
 
-  /* ---------- Hero route animation ---------- */
+  /* ---------- Hero flight-route animation ---------- */
   const line = document.getElementById("route-line");
-  const truck = document.getElementById("route-truck");
-  if (line && truck && !prefersReduced) {
+  const plane = document.getElementById("route-plane");
+  if (line && plane) {
     const len = line.getTotalLength();
-    line.style.strokeDasharray = String(len);
-    line.style.strokeDashoffset = String(len);
-
-    const DURATION = 3200;
-    let start = null;
-    let raf = null;
-
-    const ease = (t) => 1 - Math.pow(1 - t, 3); // ease-out-cubic
-
-    const step = (ts) => {
-      if (start === null) start = ts;
-      const raw = Math.min((ts - start) / DURATION, 1);
-      const t = ease(raw);
-      line.style.strokeDashoffset = String(len * (1 - t));
-      const pt = line.getPointAtLength(len * t);
-      truck.setAttribute("transform", `translate(${pt.x}, ${pt.y})`);
-      if (raw < 1) {
-        raf = requestAnimationFrame(step);
-      } else {
-        // gentle loop pause then restart
-        setTimeout(() => {
-          start = null;
-          raf = requestAnimationFrame(step);
-        }, 1400);
-      }
+    const angleAt = (d) => {
+      const a = line.getPointAtLength(Math.max(0, d - 1));
+      const b = line.getPointAtLength(Math.min(len, d + 1));
+      return (Math.atan2(b.y - a.y, b.x - a.x) * 180) / Math.PI + 90;
+    };
+    const place = (d) => {
+      const p = line.getPointAtLength(d);
+      plane.setAttribute("transform", `translate(${p.x} ${p.y}) rotate(${angleAt(d)})`);
     };
 
-    // place truck at origin before animating
-    const p0 = line.getPointAtLength(0);
-    truck.setAttribute("transform", `translate(${p0.x}, ${p0.y})`);
+    if (prefersReduced) {
+      line.style.strokeDasharray = "none";
+      place(len);
+    } else {
+      line.style.strokeDasharray = String(len);
+      line.style.strokeDashoffset = String(len);
+      place(0);
 
-    const routeObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && raf === null) {
-            raf = requestAnimationFrame(step);
-          } else if (!entry.isIntersecting && raf !== null) {
-            cancelAnimationFrame(raf);
-            raf = null;
+      const DURATION = 3600;
+      const ease = (t) => 1 - Math.pow(1 - t, 3);
+      let start = null;
+      let raf = null;
+
+      const step = (ts) => {
+        if (start === null) start = ts;
+        const raw = Math.min((ts - start) / DURATION, 1);
+        const t = ease(raw);
+        line.style.strokeDashoffset = String(len * (1 - t));
+        place(len * t);
+        if (raw < 1) {
+          raf = requestAnimationFrame(step);
+        } else {
+          setTimeout(() => {
             start = null;
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-    routeObserver.observe(line);
-  } else if (line && truck) {
-    // Reduced motion: show the completed route, truck at destination.
-    const len = line.getTotalLength();
-    const end = line.getPointAtLength(len);
-    truck.setAttribute("transform", `translate(${end.x}, ${end.y})`);
+            raf = requestAnimationFrame(step);
+          }, 1800);
+        }
+      };
+
+      const obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && raf === null) {
+              raf = requestAnimationFrame(step);
+            } else if (!entry.isIntersecting && raf !== null) {
+              cancelAnimationFrame(raf);
+              raf = null;
+              start = null;
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      obs.observe(line);
+    }
   }
 })();

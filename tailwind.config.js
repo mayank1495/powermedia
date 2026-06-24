@@ -4,47 +4,49 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Committed orange identity — channel triplets in CSS vars (see src/input.css)
-        brand: {
-          DEFAULT: "oklch(var(--c-brand) / <alpha-value>)",
-          ink: "oklch(var(--c-brand-ink) / <alpha-value>)",
-          soft: "oklch(var(--c-brand-soft) / <alpha-value>)",
-        },
-        ink: {
-          DEFAULT: "oklch(var(--c-ink) / <alpha-value>)",
-          muted: "oklch(var(--c-muted) / <alpha-value>)",
-        },
-        surface: {
-          DEFAULT: "oklch(var(--c-surface) / <alpha-value>)",
-          raised: "oklch(var(--c-surface) / <alpha-value>)",
-        },
-        night: {
-          DEFAULT: "oklch(var(--c-night) / <alpha-value>)",
-          soft: "oklch(var(--c-night-soft) / <alpha-value>)",
-          line: "oklch(var(--c-night-line) / <alpha-value>)",
-        },
-      },
-      fontWeight: {
-        800: "800",
-        900: "900",
+        // Column.com palette — paper canvas, deep-ink type, ember accent.
+        paper: "#f6f6f8",
+        bg: "#f6f6f8",
+        card: "#ffffff",
+        surface: { DEFAULT: "#ffffff", raised: "#ffffff" },
+        ink: { DEFAULT: "#011821", carbon: "#12161e", muted: "#7c7f88" },
+        slate: "#7c7f88",
+        mist: "#e3e4e8",
+        fog: "#a9acb6",
+        graphite: "#3b3e47",
+        indigo: { DEFAULT: "#111a4a", 700: "#0c1438" },
+        ember: "#ec652b",
+        // legacy names kept working: brand=ember accent, brand-ink=indigo (readable), brand-soft=cyan
+        brand: { DEFAULT: "#ec652b", ink: "#111a4a", soft: "#c1e8ef" },
+        teal: { DEFAULT: "#167e6c", deep: "#023247" },
+        cyan: "#c1e8ef",
+        sky: "#7ea7e9",
+        mint: "#44b48b",
+        lavender: "#9f7aee",
+        night: { DEFAULT: "#011821", soft: "#12161e", line: "#3b3e47" },
       },
       spacing: {
         13: "3.25rem",
       },
       fontFamily: {
-        display: ["Archivo", "system-ui", "sans-serif"],
-        sans: ["'Hanken Grotesk'", "system-ui", "sans-serif"],
+        display: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+        sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+        mono: ["'JetBrains Mono'", "ui-monospace", "SFMono-Regular", "monospace"],
       },
       letterSpacing: {
-        tightest: "-0.04em",
+        tightest: "-0.03em",
+        tighter: "-0.02em",
       },
       maxWidth: {
         content: "75rem",
         prose: "65ch",
       },
       boxShadow: {
-        lift: "0 12px 34px -18px rgb(0 0 0 / 0.22)",
-        glow: "0 12px 32px -16px var(--c-brand-glow)",
+        subtle:
+          "rgba(17, 26, 74, 0.1) 0 1px 3px 0, rgba(17, 26, 74, 0.05) 0 1px 0 0",
+        card: "var(--shadow-card)",
+        float: "var(--shadow-float)",
+        lift: "var(--shadow-float)",
       },
       transitionTimingFunction: {
         "out-expo": "cubic-bezier(0.16, 1, 0.3, 1)",

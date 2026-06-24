@@ -4,21 +4,32 @@
 
 @layer base {
   :root {
-    /* Coral logo identity — OKLCH channel triplets (L C H) so Tailwind
-       alpha modifiers like bg-night/10 resolve through oklch(... / <alpha>) */
-    --c-brand: 0.7 0.197 25;
-    --c-brand-ink: 0.55 0.17 25;
-    --c-brand-soft: 0.955 0.032 32;
-    --c-brand-glow: oklch(0.7 0.197 25 / 0.38);
+    /* Column.com design system — exact published tokens.
+       Paper-white canvas, deep-ink type, ember-orange rationed accent,
+       deep-indigo primary action, teal/cyan functional badges. */
+    --c-paper: #f6f6f8;
+    --c-card: #ffffff;
+    --c-ink: #011821;
+    --c-carbon: #12161e;
+    --c-slate: #7c7f88;
+    --c-mist: #e3e4e8;
+    --c-fog: #a9acb6;
+    --c-graphite: #3b3e47;
+    --c-indigo: #111a4a;
+    --c-ember: #ec652b;
+    --c-teal: #167e6c;
+    --c-teal-deep: #023247;
+    --c-sky: #7ea7e9;
+    --c-cyan: #c1e8ef;
+    --c-mint: #44b48b;
+    --c-lavender: #9f7aee;
 
-    --c-bg: 1 0 0;
-    --c-surface: 0.975 0.004 60;
-    --c-ink: 0.21 0.014 52;
-    --c-muted: 0.46 0.014 52;
-
-    --c-night: 0.18 0.012 52;
-    --c-night-soft: 0.235 0.013 52;
-    --c-night-line: 0.32 0.012 52;
+    /* Blue-tinted elevation, never pure black */
+    --shadow-card: rgba(17, 26, 74, 0.1) 0 1px 3px 0, rgba(17, 26, 74, 0.05) 0 1px 0 0,
+      rgba(255, 255, 255, 0.5) 0 1px 0 0 inset, rgba(255, 255, 255, 0.5) 0 1px 4px 0 inset;
+    --shadow-float: rgba(17, 26, 74, 0.04) 0 40px 32px 0, rgba(17, 26, 74, 0.05) 0 22px 18px 0,
+      rgba(17, 26, 74, 0.05) 0 12px 10px 0, rgba(17, 26, 74, 0.06) 0 7px 5px 0,
+      rgba(17, 26, 74, 0.08) 0 3px 2px 0;
   }
 
   html {
@@ -32,15 +43,20 @@
   }
 
   body {
-    background-color: oklch(var(--c-bg));
-    color: oklch(var(--c-ink));
-    font-family: "Hanken Grotesk", system-ui, sans-serif;
+    background-color: var(--c-paper);
+    color: var(--c-ink);
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+    font-feature-settings: "cv11", "salt", "ss01";
+    font-weight: 400;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
 
+  /* Swiss neo-grotesque headlines: large, light (300), tightly tracked.
+     Weight 300 is the signature — "engineered, not shouting". */
   h1, h2, h3 {
-    font-family: "Archivo", system-ui, sans-serif;
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+    font-weight: 300;
     text-wrap: balance;
   }
 
@@ -49,14 +65,14 @@
   }
 
   ::selection {
-    background-color: oklch(var(--c-brand));
+    background-color: var(--c-indigo);
     color: #fff;
   }
 
   :focus-visible {
-    outline: 3px solid oklch(var(--c-brand));
+    outline: 2px solid var(--c-indigo);
     outline-offset: 3px;
-    border-radius: 4px;
+    border-radius: 8px;
   }
 }
 
@@ -66,27 +82,31 @@
   }
 
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-tight transition duration-300 ease-out-expo;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg text-sm font-medium transition duration-200 ease-out;
   }
 
+  /* Primary action = Deep Indigo fill (NOT deep-ink, which is the text color) */
   .btn-primary {
-    @apply btn bg-brand px-7 py-3.5 text-white shadow-glow hover:-translate-y-0.5 hover:bg-brand-ink;
+    @apply btn bg-indigo px-5 py-3 text-white shadow-subtle hover:bg-indigo-700;
   }
 
-  .btn-dark {
-    @apply btn bg-night px-7 py-3.5 text-white hover:-translate-y-0.5 hover:bg-night-soft;
-  }
-
+  /* Secondary = hairline ghost on white */
   .btn-ghost {
-    @apply btn border border-night/20 px-7 py-3.5 text-ink hover:-translate-y-0.5 hover:border-night/40;
+    @apply btn border border-mist bg-card px-4 py-3 text-ink hover:border-fog hover:text-indigo;
   }
 
-  .eyebrow-mark {
-    @apply inline-flex items-center gap-2.5 text-sm font-semibold text-brand-ink;
+  /* On dark surfaces */
+  .btn-light {
+    @apply btn bg-card px-5 py-3 text-ink hover:bg-white/90;
+  }
+
+  /* Section label pill — Pale Cyan bg, Forest Teal mono uppercase */
+  .pill-badge {
+    @apply inline-flex items-center gap-2 rounded-full bg-cyan/70 px-3 py-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-teal;
   }
 
   .field {
-    @apply w-full rounded-2xl border border-night/10 bg-white px-5 py-4 text-ink placeholder:text-ink-muted/70 transition focus:border-brand focus:outline-none focus:ring-4 focus:ring-brand/20;
+    @apply w-full rounded-lg border border-mist bg-card px-4 py-3 text-ink placeholder:text-slate/80 transition focus:border-indigo/50 focus:outline-none focus:ring-4 focus:ring-indigo/10;
   }
 }
 
@@ -95,30 +115,29 @@
     text-wrap: balance;
   }
 
-  /* Faded grid backdrop for the hero */
-  .hero-grid {
-    background-image:
-      linear-gradient(to right, oklch(0.45 0.03 40 / 0.08) 1px, transparent 1px),
-      linear-gradient(to bottom, oklch(0.45 0.03 40 / 0.08) 1px, transparent 1px);
-    background-size: 54px 54px;
-    background-position: 0 0;
-    -webkit-mask-image: radial-gradient(115% 85% at 50% 0%, #000 0%, #000 38%, transparent 78%);
-    mask-image: radial-gradient(115% 85% at 50% 0%, #000 0%, #000 38%, transparent 78%);
-    animation: grid-drift 7s linear infinite;
+  /* Dotted world-map backdrop for the hero */
+  .hero-map {
+    -webkit-mask-image: radial-gradient(120% 90% at 60% 38%, #000 0%, #000 55%, transparent 86%);
+    mask-image: radial-gradient(120% 90% at 60% 38%, #000 0%, #000 55%, transparent 86%);
   }
 
-  @keyframes grid-drift {
-    from {
-      background-position: 0 0;
-    }
-    to {
-      background-position: 54px 54px;
-    }
+  /* Route flight-path animation drawn over the map */
+  .route-pulse {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: route-pulse 2.4s ease-out infinite;
+  }
+
+  @keyframes route-pulse {
+    0% { opacity: 0.9; transform: scale(0.7); }
+    70% { opacity: 0; transform: scale(1.6); }
+    100% { opacity: 0; transform: scale(1.6); }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .hero-grid {
+    .route-pulse {
       animation: none;
+      opacity: 0;
     }
   }
 

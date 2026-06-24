@@ -44,7 +44,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,500;0,600;0,700;0,800;0,900;1,700;1,900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
 
@@ -124,19 +124,19 @@
     </div>
 
     <!-- ============ NAV ============ -->
-    <header id="site-header" class="sticky top-0 z-50 transition-all duration-300 ease-out-expo">
+    <header id="site-header" class="sticky top-0 z-50 border-b border-transparent transition-[transform,background-color,border-color,box-shadow] duration-300 ease-out-expo">
       <div class="container-x">
         <nav
           id="nav-shell"
-          class="mt-4 flex items-center justify-between rounded-full border border-transparent px-4 py-2.5 transition-all duration-300 ease-out-expo sm:px-5"
+          class="flex items-center justify-between py-3.5"
         >
           <a href="#top" class="flex items-center gap-3" aria-label="Power Media home">
-            <svg viewBox="0 0 28 24" class="h-8 w-9 text-brand-ink" fill="currentColor" aria-hidden="true">
+            <svg viewBox="0 0 28 24" class="h-9 w-11 text-ember" fill="currentColor" aria-hidden="true">
               <path d="M9 1.5h12l-7 9.5H2z"/>
               <path d="M16 13h12l-7 9.5H9z"/>
             </svg>
             <span class="flex flex-col leading-none">
-              <span class="font-display text-xl font-800 tracking-tightest text-ink">Power Media</span>
+              <span class="font-display text-xl font-medium tracking-tighter text-ink">Power Media</span>
               <span class="mt-0.5 text-[0.64rem] font-semibold uppercase tracking-[0.18em] text-ink-muted">Systems &amp; Services</span>
             </span>
           </a>
@@ -165,11 +165,11 @@
 
       <!-- Mobile drawer -->
       <div id="mobile-menu" class="container-x hidden lg:hidden">
-        <div class="mt-2 rounded-3xl border border-night/10 bg-white p-3 shadow-lift">
-          <a class="block rounded-2xl px-4 py-3 text-base font-medium text-ink hover:bg-night/5" href="#services">Services</a>
-          <a class="block rounded-2xl px-4 py-3 text-base font-medium text-ink hover:bg-night/5" href="#how">How it works</a>
-          <a class="block rounded-2xl px-4 py-3 text-base font-medium text-ink hover:bg-night/5" href="#track">Track</a>
-          <a class="block rounded-2xl px-4 py-3 text-base font-medium text-ink hover:bg-night/5" href="#contact">Contact</a>
+        <div class="mt-2 rounded-xl border border-night/10 bg-white p-3 shadow-lift">
+          <a class="block rounded-lg px-4 py-3 text-base font-medium text-ink hover:bg-night/5" href="#services">Services</a>
+          <a class="block rounded-lg px-4 py-3 text-base font-medium text-ink hover:bg-night/5" href="#how">How it works</a>
+          <a class="block rounded-lg px-4 py-3 text-base font-medium text-ink hover:bg-night/5" href="#track">Track</a>
+          <a class="block rounded-lg px-4 py-3 text-base font-medium text-ink hover:bg-night/5" href="#contact">Contact</a>
           <a class="btn-primary mt-2 w-full" href="#contact">Contact us</a>
         </div>
       </div>
@@ -178,120 +178,104 @@
     <main id="main">
       <!-- ============ HERO ============ -->
       <section id="top" class="relative overflow-hidden">
-        <div class="hero-grid pointer-events-none absolute inset-0 -z-10" aria-hidden="true"></div>
-        <div class="container-x grid items-center gap-12 pb-16 pt-10 sm:pt-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8 lg:pb-24 lg:pt-20">
+        <!-- Dotted world-map backdrop -->
+        <div class="hero-map pointer-events-none absolute inset-0" aria-hidden="true">
+          <img
+            src="resources/img/world-dots.svg"
+            alt=""
+            width="2000"
+            height="1000"
+            class="absolute inset-0 h-full w-full object-cover object-[62%_40%] opacity-65 lg:opacity-100"
+          />
+          <!-- Animated flight route, aligned to the map projection -->
+          <svg class="absolute inset-0 hidden h-full w-full lg:block" viewBox="0 0 2000 1000" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true">
+            <path d="M1010 250 C1180 140 1420 150 1576 205" stroke="rgba(17,26,74,0.28)" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 13" />
+            <path id="route-line" d="M1010 250 C1180 140 1420 150 1576 205" stroke="#111a4a" stroke-width="3.5" stroke-linecap="round" />
+            <circle cx="1010" cy="250" r="7" fill="#111a4a" />
+            <circle cx="1576" cy="205" r="16" fill="none" stroke="rgba(17,26,74,0.45)" stroke-width="2.5" class="route-pulse" />
+            <circle cx="1576" cy="205" r="9" fill="#111a4a" />
+            <g id="route-plane">
+              <circle r="17" fill="#111a4a" />
+              <path transform="translate(-9.5,-9.5) scale(0.8)" fill="#fff" d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z" />
+            </g>
+          </svg>
+        </div>
+        <!-- Legibility wash: flat light scrim on mobile, artistic fade on desktop -->
+        <div class="pointer-events-none absolute inset-0 bg-bg/60 lg:hidden"></div>
+        <div class="pointer-events-none absolute inset-0 hidden bg-gradient-to-r from-bg via-bg/85 to-transparent lg:block"></div>
+
+        <div class="container-x relative z-10 grid items-center gap-12 pb-16 pt-12 sm:pt-16 lg:min-h-[42rem] lg:grid-cols-[1.02fr_0.98fr] lg:gap-8 lg:pb-28 lg:pt-24">
           <!-- Left -->
           <div class="reveal-stage max-w-2xl">
-            <span data-reveal class="eyebrow-mark" style="--reveal-delay: 0ms">
-              <span class="relative flex h-2.5 w-2.5">
-                <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand/60"></span>
-                <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-brand"></span>
-              </span>
+            <span data-reveal class="pill-badge" style="--reveal-delay: 0ms">
+              <span class="h-1.5 w-1.5 rounded-full bg-teal" aria-hidden="true"></span>
               Pan-India &amp; international shipping
             </span>
 
             <h1
               data-reveal
               style="--reveal-delay: 90ms"
-              class="mt-5 font-display text-[clamp(2.4rem,7vw,4.5rem)] font-800 leading-[0.96] tracking-tightest text-ink"
+              class="mt-6 font-display text-[clamp(2.25rem,5.6vw,3.75rem)] font-light leading-[1.05] tracking-tightest text-ink"
             >
-              Your parcel,<br />
-              already <span class="relative whitespace-nowrap text-brand-ink italic">moving<svg class="absolute -bottom-2 left-0 w-full" viewBox="0 0 240 14" fill="none" aria-hidden="true"><path d="M2 11C40 4 120 2 238 6" stroke="currentColor" stroke-width="4" stroke-linecap="round" class="underline-draw"/></svg></span>.
+              Move anything, anywhere,<br /><span class="text-fog">on time.</span>
             </h1>
 
             <p data-reveal style="--reveal-delay: 170ms" class="mt-6 max-w-prose text-lg leading-relaxed text-ink-muted">
-              We move personal, professional and commercial packages across India and the
-              globe, by air and by road. Cost-effective, error-free and on time, every time.
+              Power Media moves personal, professional and commercial parcels across
+              India and around the world — by air and by road. Cost-effective,
+              error-free and delivered when we say.
             </p>
 
-            <!-- Inline track widget -->
-            <form
-              data-reveal
-              style="--reveal-delay: 250ms"
-              action="#track"
-              class="mt-8 flex flex-col gap-3 rounded-3xl border border-night/10 bg-white p-3 shadow-lift sm:flex-row sm:items-center sm:rounded-full sm:p-2 sm:pl-5"
-            >
-              <label for="hero-track" class="sr-only">Tracking number</label>
-              <div class="flex flex-1 items-center gap-3">
-                <svg class="h-5 w-5 shrink-0 text-brand-ink" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="m20 20-3.2-3.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-                <input
-                  id="hero-track"
-                  type="text"
-                  name="tracking"
-                  inputmode="latin"
-                  placeholder="Enter your tracking number"
-                  class="w-full bg-transparent py-2.5 text-ink placeholder:text-ink-muted/70 focus:outline-none"
-                />
-              </div>
-              <button type="submit" class="btn-primary h-12 shrink-0">Track now</button>
-            </form>
+            <div data-reveal style="--reveal-delay: 250ms" class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a href="#contact" class="btn-primary">Contact us <span aria-hidden="true" class="text-white/75">&rarr;</span></a>
+              <a href="#services" class="btn-ghost">View services</a>
+            </div>
 
-            <div data-reveal style="--reveal-delay: 320ms" class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-ink-muted">
+            <div data-reveal style="--reveal-delay: 320ms" class="mt-9 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-ink-muted">
               <span class="flex items-center gap-2"><svg class="h-4 w-4 text-brand-ink" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m4 12 5 5L20 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 1-Day TDD express</span>
               <span class="flex items-center gap-2"><svg class="h-4 w-4 text-brand-ink" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m4 12 5 5L20 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Door-to-door pickup</span>
               <span class="flex items-center gap-2"><svg class="h-4 w-4 text-brand-ink" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m4 12 5 5L20 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Best market rates</span>
             </div>
           </div>
 
-          <!-- Right: animated route card -->
-          <div data-reveal style="--reveal-delay: 200ms" class="relative">
-            <div class="relative overflow-hidden rounded-[2rem] bg-night p-6 shadow-lift sm:p-8">
-              <div class="pointer-events-none absolute -right-16 -top-20 h-64 w-64 rounded-full bg-brand/25 blur-3xl"></div>
-              <svg class="pointer-events-none absolute left-1/2 top-[46%] h-[150%] w-[150%] -translate-x-1/2 -translate-y-1/2 text-white/[0.08]" viewBox="0 0 400 400" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true" style="-webkit-mask-image: radial-gradient(circle at 50% 45%, #000 30%, transparent 72%); mask-image: radial-gradient(circle at 50% 45%, #000 30%, transparent 72%)">
-                <circle cx="200" cy="200" r="168" />
-                <ellipse cx="200" cy="200" rx="118" ry="168" />
-                <ellipse cx="200" cy="200" rx="60" ry="168" />
-                <line x1="200" y1="32" x2="200" y2="368" />
-                <line x1="32" y1="200" x2="368" y2="200" />
-                <ellipse cx="200" cy="200" rx="168" ry="110" />
-                <ellipse cx="200" cy="200" rx="168" ry="55" />
-              </svg>
-              <div class="relative flex items-center justify-between">
-                <div>
-                  <p class="text-xs font-semibold uppercase tracking-[0.2em] text-white/50">In transit</p>
-                  <p class="mt-1 font-display text-xl font-800 text-white">PM-48291-IN</p>
+          <!-- Right: floating shipment card -->
+          <div data-reveal style="--reveal-delay: 220ms" class="relative lg:justify-self-end">
+            <div class="w-full max-w-md rounded-lg border border-night/10 bg-white/90 p-5 shadow-lift backdrop-blur-sm sm:p-6">
+              <div class="flex items-start justify-between gap-4 border-b border-night/8 pb-4">
+                <div class="flex items-center gap-3">
+                  <span class="grid h-9 w-9 place-items-center rounded-lg bg-brand-soft text-brand-ink">
+                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 10.5 12 6l9 4.5M3 10.5V18l9 4.5M3 10.5 12 15m9-4.5V18l-9 4.5M21 10.5 12 15m0 0v7.5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                  </span>
+                  <div>
+                    <p class="text-sm font-semibold text-ink">Kolkata, IN</p>
+                    <p class="text-xs text-ink-muted">Origin · picked up</p>
+                  </div>
                 </div>
-                <span class="flex items-center gap-2 rounded-full bg-brand px-3 py-1.5 text-xs font-bold text-white">
-                  <span class="h-2 w-2 animate-pulse rounded-full bg-white"></span> On time
+                <span id="ship-status" class="whitespace-nowrap rounded-full bg-brand-soft px-2.5 py-1 text-xs font-semibold text-brand-ink">In transit</span>
+              </div>
+
+              <div class="flex items-center gap-3 py-4">
+                <span class="grid h-9 w-9 place-items-center rounded-lg bg-surface text-ink">
+                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.6"/></svg>
                 </span>
-              </div>
-
-              <!-- Route SVG -->
-              <svg class="route-svg relative mt-8 w-full" viewBox="0 0 360 150" fill="none" aria-hidden="true">
-                <path d="M28 118 C 110 118, 120 40, 200 40 S 300 40, 332 40" stroke="oklch(0.32 0.012 52)" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 9"/>
-                <path id="route-line" d="M28 118 C 110 118, 120 40, 200 40 S 300 40, 332 40" stroke="oklch(0.7 0.197 25)" stroke-width="3.5" stroke-linecap="round"/>
-                <g class="route-node"><circle cx="28" cy="118" r="7" fill="oklch(0.7 0.197 25)"/><circle cx="28" cy="118" r="12" stroke="oklch(0.7 0.197 25)" stroke-opacity="0.35" stroke-width="2"/></g>
-                <circle cx="332" cy="40" r="6" fill="#fff"/>
-                <g id="route-truck">
-                  <circle r="17" fill="oklch(0.7 0.197 25)"/>
-                  <g transform="translate(-9,-8)" fill="#fff">
-                    <path d="M0 2.5A1.2 1.2 0 0 1 1.2 1.3H9a.8.8 0 0 1 .8.8V12H1.2A1.2 1.2 0 0 1 0 10.8V2.5Z"/>
-                    <path d="M10 5h2.6a1.6 1.6 0 0 1 1.36.77L15.3 8a1.6 1.6 0 0 1 .25.86V12h-5.5V5Z"/>
-                    <circle cx="4" cy="13.5" r="1.7"/><circle cx="12.4" cy="13.5" r="1.7"/>
-                  </g>
-                </g>
-              </svg>
-
-              <div class="relative mt-6 grid grid-cols-3 gap-3 text-center">
-                <div class="rounded-2xl bg-night-soft p-3">
-                  <p class="text-xs text-white/50">Picked up</p>
-                  <p class="mt-1 text-sm font-semibold text-white">Kolkata</p>
-                </div>
-                <div class="rounded-2xl bg-night-soft p-3">
-                  <p class="text-xs text-white/50">Mode</p>
-                  <p class="mt-1 text-sm font-semibold text-white">By air</p>
-                </div>
-                <div class="rounded-2xl bg-night-soft p-3">
-                  <p class="text-xs text-white/50">ETA</p>
-                  <p class="mt-1 text-sm font-semibold text-brand">Today</p>
+                <div>
+                  <p id="ship-dest" class="text-sm font-semibold text-ink">London, UK</p>
+                  <p id="ship-dest-note" class="text-xs text-ink-muted">Destination · ETA today</p>
                 </div>
               </div>
-            </div>
 
-            <!-- floating chip -->
-            <div class="absolute -left-5 -bottom-7 hidden rounded-2xl border border-night/10 bg-white px-4 py-3 shadow-lift sm:block">
-              <p class="text-xs text-ink-muted">Delivered this year</p>
-              <p class="font-display text-xl font-900 text-ink">2.4L+ <span class="text-brand-ink">parcels</span></p>
+              <div class="flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-night/8 pt-4 text-xs font-medium">
+                <span class="flex items-center gap-1.5 text-brand-ink"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m4 12 5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Picked up</span>
+                <span class="flex items-center gap-1.5 text-ink-muted"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M3 12h18" stroke="currentColor" stroke-width="1.6"/></svg> <span id="ship-mode">Air freight</span></span>
+                <span class="flex items-center gap-1.5 text-ink-muted"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Outgoing</span>
+              </div>
+
+              <dl class="mt-4 rounded-xl bg-night px-4 py-3 font-mono text-[0.72rem] leading-relaxed text-white/70">
+                <div class="flex justify-between"><dt class="text-white/40">tracking_id</dt><dd id="ship-track" class="text-white">PM-48291-IN</dd></div>
+                <div class="flex justify-between"><dt class="text-white/40">service</dt><dd id="ship-svc" class="text-white">TDD&nbsp;Express</dd></div>
+                <div class="flex justify-between"><dt class="text-white/40">weight_kg</dt><dd id="ship-weight" class="text-white">2.4</dd></div>
+                <div class="flex justify-between"><dt class="text-white/40">eta</dt><dd id="ship-eta" class="text-brand">today</dd></div>
+              </dl>
             </div>
           </div>
         </div>
@@ -299,61 +283,84 @@
 
       <!-- ============ STATS BAND ============ -->
       <section class="container-x">
-        <div class="reveal-stage grid gap-px overflow-hidden rounded-[2rem] bg-night/10 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="reveal-stage grid gap-px overflow-hidden rounded-xl bg-night/10 sm:grid-cols-2 lg:grid-cols-4">
           <div data-reveal class="bg-surface p-7">
-            <p class="font-display text-3xl font-800 tracking-tightest text-ink">365<span class="text-brand-ink">/</span>yr</p>
+            <p class="font-display text-3xl font-light tracking-tightest text-ink">365<span class="text-brand-ink">/</span>yr</p>
             <p class="mt-1 text-sm text-ink-muted">Open every single day of the year</p>
           </div>
           <div data-reveal style="--reveal-delay: 80ms" class="bg-surface p-7">
-            <p class="font-display text-3xl font-800 tracking-tightest text-ink">99.4<span class="text-brand-ink">%</span></p>
+            <p class="font-display text-3xl font-light tracking-tightest text-ink">99.4<span class="text-brand-ink">%</span></p>
             <p class="mt-1 text-sm text-ink-muted">On-time delivery rate</p>
           </div>
           <div data-reveal style="--reveal-delay: 160ms" class="bg-surface p-7">
-            <p class="font-display text-3xl font-800 tracking-tightest text-ink">2<span class="text-brand-ink">×</span></p>
+            <p class="font-display text-3xl font-light tracking-tightest text-ink">2<span class="text-brand-ink">×</span></p>
             <p class="mt-1 text-sm text-ink-muted">Modes, by air &amp; by road</p>
           </div>
           <div data-reveal style="--reveal-delay: 240ms" class="bg-surface p-7">
-            <p class="font-display text-3xl font-800 tracking-tightest text-ink">1<span class="text-brand-ink">-day</span></p>
+            <p class="font-display text-3xl font-light tracking-tightest text-ink">1<span class="text-brand-ink">-day</span></p>
             <p class="mt-1 text-sm text-ink-muted">TDD express turnaround</p>
           </div>
         </div>
       </section>
 
-      <!-- ============ FEATURE BAND ============ -->
-      <section class="container-x py-16 lg:py-20">
-        <div class="reveal-stage grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+      <!-- ============ COVERAGE BAND ============ -->
+      <section class="container-x py-16 lg:py-24">
+        <div class="reveal-stage grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <div data-reveal class="relative order-2 lg:order-1">
-            <div class="overflow-hidden rounded-[2rem] shadow-lift">
-              <img src="resources/img/courier-rider.jpg" alt="Power Media courier rider with a delivery backpack on the move" loading="lazy" width="1200" height="1000" class="h-[22rem] w-full object-cover sm:h-[26rem]" />
-            </div>
-            <div class="absolute -bottom-5 -right-4 hidden rounded-2xl bg-night px-5 py-4 text-white shadow-lift sm:block">
-              <p class="text-xs text-white/55">Coverage</p>
-              <p class="font-display text-lg font-800">Pan-India &amp; global</p>
+            <div class="relative overflow-hidden rounded-xl border border-night/10 bg-night p-8 sm:p-10">
+              <img
+                src="resources/img/world-dots.svg"
+                alt=""
+                aria-hidden="true"
+                class="pointer-events-none absolute inset-0 h-full w-full scale-[1.7] object-cover object-[72%_36%] opacity-80"
+                style="-webkit-mask-image: radial-gradient(120% 110% at 70% 30%, #000 10%, transparent 78%); mask-image: radial-gradient(120% 110% at 70% 30%, #000 10%, transparent 78%)"
+              />
+              <div class="pointer-events-none absolute -right-16 -top-20 h-64 w-64 rounded-full bg-brand/20 blur-3xl"></div>
+              <div class="relative">
+                <p class="text-sm font-semibold text-white/55">Coverage</p>
+                <p class="mt-2 font-display text-4xl font-light tracking-tightest text-white sm:text-5xl">19,000+ <span class="text-brand">pin codes</span></p>
+                <p class="mt-3 max-w-xs text-white/70">Every state in India, plus international lanes to over 200 destinations worldwide.</p>
+                <div class="mt-10 grid grid-cols-3 gap-4">
+                  <div>
+                    <p class="font-display text-2xl font-light text-white">28</p>
+                    <p class="mt-1 text-xs text-white/55">States</p>
+                  </div>
+                  <div>
+                    <p class="font-display text-2xl font-light text-white">8</p>
+                    <p class="mt-1 text-xs text-white/55">UTs</p>
+                  </div>
+                  <div>
+                    <p class="font-display text-2xl font-light text-white">200+</p>
+                    <p class="mt-1 text-xs text-white/55">Countries</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div data-reveal style="--reveal-delay: 120ms" class="order-1 max-w-xl lg:order-2">
-            <h2 class="font-display text-[clamp(1.85rem,4vw,2.6rem)] font-800 leading-[1] tracking-tightest text-ink">
-              Real people moving your parcels
+            <h2 class="font-display text-[clamp(1.85rem,4vw,2.6rem)] font-light leading-[1.02] tracking-tightest text-ink">
+              Built to move, everywhere you need
             </h2>
             <p class="mt-4 text-lg leading-relaxed text-ink-muted">
-              Behind every tracking number is a rider who knows the city. We pick up, sort and
-              deliver with the kind of care that only comes from doing this every single day.
+              Behind every tracking number is a team that knows the route. We pick up,
+              sort and deliver with the kind of care that only comes from doing this
+              every single day.
             </p>
             <ul class="mt-7 space-y-4">
               <li class="flex gap-3">
                 <span class="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-brand-soft text-brand-ink"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m4 12 5 5L20 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                <span class="text-ink-muted"><span class="font-semibold text-ink">Trained local riders</span> who handle every parcel like it's their own.</span>
+                <span class="text-ink-muted"><span class="font-semibold text-ink">Trained local teams</span> who handle every parcel like it's their own.</span>
               </li>
               <li class="flex gap-3">
                 <span class="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-brand-soft text-brand-ink"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m4 12 5 5L20 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                <span class="text-ink-muted"><span class="font-semibold text-ink">Real-time updates</span> at pickup, in transit and on delivery.</span>
+                <span class="text-ink-muted"><span class="font-semibold text-ink">Status at every step</span> — pickup, in transit and on delivery.</span>
               </li>
               <li class="flex gap-3">
                 <span class="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-brand-soft text-brand-ink"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m4 12 5 5L20 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                 <span class="text-ink-muted"><span class="font-semibold text-ink">365 days a year</span>, including weekends and holidays.</span>
               </li>
             </ul>
-            <a href="#contact" class="btn-dark mt-8 h-12">Book a pickup</a>
+            <a href="#contact" class="btn-primary mt-8">Book a pickup</a>
           </div>
         </div>
       </section>
@@ -362,32 +369,41 @@
       <section id="services" class="container-x py-16 lg:py-20">
         <div class="reveal-stage flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
           <div data-reveal class="max-w-xl">
-            <h2 class="font-display text-[clamp(1.85rem,4vw,2.6rem)] font-800 leading-[0.98] tracking-tightest text-ink">
+            <h2 class="font-display text-[clamp(1.85rem,4vw,2.6rem)] font-light leading-[0.98] tracking-tightest text-ink">
               A full logistics stack, built for speed
             </h2>
             <p class="mt-4 text-lg text-ink-muted">
               Whatever the package, wherever it's headed, we have a lane for it.
             </p>
           </div>
-          <a data-reveal href="#contact" class="btn-ghost h-12 shrink-0">Get a quote</a>
+          <a data-reveal href="#contact" class="btn-ghost shrink-0">Get a quote</a>
         </div>
 
         <!-- Bento -->
         <div class="reveal-stage mt-10 grid gap-4 lg:grid-cols-3 lg:grid-rows-2">
           <!-- Feature card -->
-          <article data-reveal class="group relative flex flex-col justify-between overflow-hidden rounded-[2rem] bg-night p-8 text-white lg:row-span-2">
+          <article data-reveal class="group relative flex flex-col justify-between overflow-hidden rounded-xl bg-night p-8 text-white lg:row-span-2">
             <div class="pointer-events-none absolute -left-10 bottom-0 h-56 w-56 rounded-full bg-brand/20 blur-3xl"></div>
             <div class="relative">
-              <span class="grid h-12 w-12 place-items-center rounded-2xl bg-brand text-white">
+              <span class="grid w-12 place-items-center rounded-lg bg-brand text-white">
                 <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 16.5 21 8.5a1.4 1.4 0 0 0 .1-2.5l-2-1.1a2 2 0 0 0-1.7-.06L3 10.5l-1.6-.9a1 1 0 0 0-1.1.1L0 10l2 4Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M6 19h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
               </span>
-              <h3 class="mt-6 font-display text-2xl font-800 tracking-tight">Air freight</h3>
+              <h3 class="mt-6 font-display text-2xl font-light tracking-tight">Air freight</h3>
               <p class="mt-3 max-w-sm text-white/70">
                 Time-critical consignments flown to metros and beyond. Fastest lane for documents and high-value parcels.
               </p>
             </div>
-            <div class="relative my-6 overflow-hidden rounded-2xl">
-              <img src="resources/img/air-freight.jpg" alt="Cargo freighter aircraft taking off for an air shipment" loading="lazy" width="1600" height="768" class="h-44 w-full object-cover transition duration-500 ease-out-expo group-hover:scale-105" />
+            <div class="relative my-6 overflow-hidden rounded-lg">
+              <img
+                src="resources/img/air-freight.jpg"
+                alt="Cargo aircraft in flight"
+                loading="lazy"
+                decoding="async"
+                width="1280"
+                height="853"
+                class="h-40 w-full object-cover object-[58%_40%]"
+              />
+              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-night via-night/35 to-night/10"></div>
             </div>
             <ul class="relative space-y-2 text-sm text-white/80">
               <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-brand"></span> Same-day &amp; next-day options</li>
@@ -396,32 +412,32 @@
             </ul>
           </article>
 
-          <article data-reveal style="--reveal-delay: 80ms" class="rounded-[2rem] border border-night/10 bg-surface p-8 transition duration-300 ease-out-expo hover:-translate-y-1 hover:shadow-lift">
-            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-brand-soft text-brand-ink">
+          <article data-reveal style="--reveal-delay: 80ms" class="rounded-xl border border-night/10 bg-surface p-8 transition duration-300 ease-out-expo hover:-translate-y-1 hover:shadow-lift">
+            <span class="grid w-12 place-items-center rounded-lg bg-brand-soft text-brand-ink">
               <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 8.5A1.5 1.5 0 0 1 3.5 7H14a1 1 0 0 1 1 1v8H3.5A1.5 1.5 0 0 1 2 14.5v-6Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M15 10h3.2a2 2 0 0 1 1.7.96L21.6 14a2 2 0 0 1 .4 1.2V16h-7v-6Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="7" cy="18" r="2" stroke="currentColor" stroke-width="1.6"/><circle cx="17.5" cy="18" r="2" stroke="currentColor" stroke-width="1.6"/></svg>
             </span>
-            <h3 class="mt-5 font-display text-xl font-800 tracking-tight text-ink">Road freight</h3>
+            <h3 class="mt-5 font-display text-xl font-light tracking-tight text-ink">Road freight</h3>
             <p class="mt-2 text-ink-muted">Reliable surface delivery for bulkier loads at the best rates across the region.</p>
           </article>
 
-          <article data-reveal style="--reveal-delay: 160ms" class="rounded-[2rem] border border-night/10 bg-surface p-8 transition duration-300 ease-out-expo hover:-translate-y-1 hover:shadow-lift">
-            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-brand-soft text-brand-ink">
+          <article data-reveal style="--reveal-delay: 160ms" class="rounded-xl border border-night/10 bg-surface p-8 transition duration-300 ease-out-expo hover:-translate-y-1 hover:shadow-lift">
+            <span class="grid w-12 place-items-center rounded-lg bg-brand-soft text-brand-ink">
               <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
             </span>
-            <h3 class="mt-5 font-display text-xl font-800 tracking-tight text-ink">Express TDD</h3>
+            <h3 class="mt-5 font-display text-xl font-light tracking-tight text-ink">Express TDD</h3>
             <p class="mt-2 text-ink-muted">Our 1-day Time-Definite Delivery plan for when it absolutely has to land tomorrow.</p>
           </article>
 
-          <article data-reveal style="--reveal-delay: 240ms" class="rounded-[2rem] border border-night/10 bg-surface p-8 transition duration-300 ease-out-expo hover:-translate-y-1 hover:shadow-lift lg:col-span-2">
+          <article data-reveal style="--reveal-delay: 240ms" class="rounded-xl border border-night/10 bg-surface p-8 transition duration-300 ease-out-expo hover:-translate-y-1 hover:shadow-lift lg:col-span-2">
             <div class="flex flex-wrap items-center justify-between gap-4">
               <div>
-                <span class="grid h-12 w-12 place-items-center rounded-2xl bg-brand-soft text-brand-ink">
+                <span class="grid w-12 place-items-center rounded-lg bg-brand-soft text-brand-ink">
                   <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 10.5 12 4l9 6.5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M5 9.5V20h14V9.5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9.5 20v-5h5v5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
                 </span>
-                <h3 class="mt-5 font-display text-xl font-800 tracking-tight text-ink">Door-to-door pickup</h3>
+                <h3 class="mt-5 font-display text-xl font-light tracking-tight text-ink">Door-to-door pickup</h3>
                 <p class="mt-2 max-w-md text-ink-muted">We collect from your doorstep and hand it over at theirs. No queues, no counters, no sweat.</p>
               </div>
-              <a href="#track" class="btn-dark h-12">Track a pickup</a>
+              <a href="#track" class="btn-primary">Track a pickup</a>
             </div>
           </article>
         </div>
@@ -429,9 +445,9 @@
 
       <!-- ============ HOW IT WORKS ============ -->
       <section id="how" class="container-x py-8 lg:py-12">
-        <div class="reveal-stage rounded-[2.5rem] bg-surface p-8 sm:p-12 lg:p-14">
+        <div class="reveal-stage rounded-xl bg-surface p-8 sm:p-12 lg:p-14">
           <div data-reveal class="max-w-xl">
-            <h2 class="font-display text-[clamp(1.85rem,4vw,2.6rem)] font-800 leading-[0.98] tracking-tightest text-ink">
+            <h2 class="font-display text-[clamp(1.85rem,4vw,2.6rem)] font-light leading-[0.98] tracking-tightest text-ink">
               Shipping, in three moves
             </h2>
             <p class="mt-4 text-lg text-ink-muted">Simple as 1, 2, 3, and you can watch every step.</p>
@@ -440,25 +456,25 @@
           <ol class="mt-10 grid gap-8 md:grid-cols-3">
             <li data-reveal class="relative">
               <div class="flex items-center gap-4">
-                <span class="font-display text-4xl font-800 text-brand-ink">01</span>
+                <span class="font-display text-4xl font-light text-brand-ink">01</span>
                 <span class="h-px flex-1 bg-night/10 md:hidden"></span>
               </div>
-              <h3 class="mt-4 font-display text-xl font-800 tracking-tight text-ink">Book a pickup</h3>
+              <h3 class="mt-4 font-display text-xl font-light tracking-tight text-ink">Book a pickup</h3>
               <p class="mt-2 text-ink-muted">Call us or drop your details. Tell us what's moving and where it's going.</p>
             </li>
             <li data-reveal style="--reveal-delay: 110ms" class="relative">
               <div class="flex items-center gap-4">
-                <span class="font-display text-4xl font-800 text-brand-ink">02</span>
+                <span class="font-display text-4xl font-light text-brand-ink">02</span>
                 <span class="h-px flex-1 bg-night/10 md:hidden"></span>
               </div>
-              <h3 class="mt-4 font-display text-xl font-800 tracking-tight text-ink">We collect &amp; dispatch</h3>
+              <h3 class="mt-4 font-display text-xl font-light tracking-tight text-ink">We collect &amp; dispatch</h3>
               <p class="mt-2 text-ink-muted">Our rider picks it up and routes it by the fastest lane, air or road.</p>
             </li>
             <li data-reveal style="--reveal-delay: 220ms" class="relative">
               <div class="flex items-center gap-4">
-                <span class="font-display text-4xl font-800 text-brand-ink">03</span>
+                <span class="font-display text-4xl font-light text-brand-ink">03</span>
               </div>
-              <h3 class="mt-4 font-display text-xl font-800 tracking-tight text-ink">Track to the door</h3>
+              <h3 class="mt-4 font-display text-xl font-light tracking-tight text-ink">Track to the door</h3>
               <p class="mt-2 text-ink-muted">Follow it in real time with your tracking ID until it's safely delivered.</p>
             </li>
           </ol>
@@ -467,16 +483,21 @@
 
       <!-- ============ TRACK ============ -->
       <section id="track" class="container-x py-16 lg:py-20">
-        <div class="reveal-stage relative overflow-hidden rounded-[2.5rem] bg-night px-6 py-14 text-white sm:px-12 lg:px-16">
-          <img src="resources/img/warehouse-motion.jpg" alt="" aria-hidden="true" loading="lazy" width="1600" height="900" class="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-25" />
-          <div class="pointer-events-none absolute inset-0 bg-night/70"></div>
+        <div class="reveal-stage relative overflow-hidden rounded-xl bg-night px-6 py-14 text-white sm:px-12 lg:px-16">
+          <img
+            src="resources/img/world-dots.svg"
+            alt=""
+            aria-hidden="true"
+            class="pointer-events-none absolute inset-0 h-full w-full object-cover object-[62%_40%] opacity-[0.18]"
+            style="-webkit-mask-image: radial-gradient(120% 130% at 50% 0%, #000, transparent 75%); mask-image: radial-gradient(120% 130% at 50% 0%, #000, transparent 75%)"
+          />
           <div class="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-brand/25 blur-3xl"></div>
           <div class="pointer-events-none absolute -bottom-24 -left-20 h-72 w-72 rounded-full bg-brand/10 blur-3xl"></div>
           <div class="relative mx-auto max-w-2xl text-center">
             <span data-reveal class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium text-white/80">
               <span class="h-2 w-2 animate-pulse rounded-full bg-brand"></span> Live tracking
             </span>
-            <h2 data-reveal style="--reveal-delay: 80ms" class="mt-5 font-display text-[clamp(2rem,5vw,3rem)] font-800 leading-[0.98] tracking-tightest">
+            <h2 data-reveal style="--reveal-delay: 80ms" class="mt-5 font-display text-[clamp(2rem,5vw,3rem)] font-light leading-[0.98] tracking-tightest">
               Where's my document?
             </h2>
             <p data-reveal style="--reveal-delay: 150ms" class="mx-auto mt-4 max-w-md text-white/70">
@@ -492,7 +513,7 @@
                 placeholder="e.g. PM-48291-IN"
                 class="w-full rounded-full border border-white/15 bg-white/5 px-6 py-4 text-white placeholder:text-white/40 focus:border-brand focus:outline-none focus:ring-4 focus:ring-brand/25"
               />
-              <button type="submit" class="btn-primary h-14 shrink-0 px-8">Track</button>
+              <button type="submit" class="btn-light h-14 shrink-0 px-8">Track</button>
             </form>
             <p data-reveal style="--reveal-delay: 280ms" class="mt-4 text-sm text-white/45">
               Don't have your number? Call Manoj at
@@ -506,8 +527,8 @@
       <section id="contact" class="container-x pb-24">
         <div class="reveal-stage grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
           <!-- Form -->
-          <div data-reveal class="rounded-[2rem] border border-night/10 bg-white p-8 sm:p-10">
-            <h2 class="font-display text-[clamp(1.8rem,4vw,2.5rem)] font-800 tracking-tightest text-ink">We're happy to hear from you</h2>
+          <div data-reveal class="rounded-xl border border-night/10 bg-white p-8 sm:p-10">
+            <h2 class="font-display text-[clamp(1.8rem,4vw,2.5rem)] font-light tracking-tightest text-ink">We're happy to hear from you</h2>
             <p class="mt-3 text-ink-muted">Questions, quotes or a pickup? Send us a line and we'll get back fast.</p>
 
             <form method="post" action="#" class="mt-8 grid gap-4 sm:grid-cols-2">
@@ -533,15 +554,15 @@
                 <textarea id="message" name="message" rows="4" placeholder="Tell us what you'd like to ship…" class="field resize-none"></textarea>
               </div>
               <div class="sm:col-span-2">
-                <button type="submit" class="btn-primary h-13 w-full sm:w-auto">Send it</button>
+                <button type="submit" class="btn-primary w-full sm:w-auto">Send it</button>
               </div>
             </form>
           </div>
 
           <!-- Details -->
           <div data-reveal style="--reveal-delay: 120ms" class="flex flex-col gap-4">
-            <div class="rounded-[2rem] bg-night p-8 text-white">
-              <h3 class="font-display text-xl font-800 tracking-tight">Power Media Systems &amp; Services</h3>
+            <div class="rounded-xl bg-night p-8 text-white">
+              <h3 class="font-display text-xl font-light tracking-tight">Power Media Systems &amp; Services</h3>
               <ul class="mt-6 space-y-5 text-white/80">
                 <li class="flex items-start gap-3">
                   <svg class="mt-0.5 h-5 w-5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.6"/></svg>
@@ -561,10 +582,10 @@
                 Find &amp; review us on Google
               </a>
             </div>
-            <div class="flex items-center gap-4 rounded-[2rem] bg-brand-soft p-8 text-ink">
+            <div class="flex items-center gap-4 rounded-xl bg-brand-soft p-8 text-ink">
               <svg class="h-10 w-10 shrink-0 text-brand-ink" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
               <div>
-                <p class="font-display text-lg font-800">Open 365 days a year</p>
+                <p class="font-display text-lg font-light">Open 365 days a year</p>
                 <p class="text-ink-muted">We're up the whole year to meet your courier needs.</p>
               </div>
             </div>
@@ -583,7 +604,7 @@
                 <path d="M9 1.5h12l-7 9.5H2z"/>
                 <path d="M16 13h12l-7 9.5H9z"/>
               </svg>
-              <span class="font-display text-2xl font-800 tracking-tightest">Power Media</span>
+              <span class="font-display text-2xl font-light tracking-tightest">Power Media</span>
             </a>
             <p class="mt-4 max-w-sm text-white/60">
               Your professional courier service, moving parcels across India and the globe, real quick.
@@ -602,10 +623,6 @@
           <p>© <span id="year">2026</span> Power Media Systems &amp; Services. All rights reserved.</p>
           <p>Kolkata, India · <a href="tel:+919831060389" class="hover:text-white">+91 98310 60389</a></p>
         </div>
-        <p class="mt-4 text-xs text-white/35">
-          Aircraft photo by Frank Kovalchek,
-          <a href="https://creativecommons.org/licenses/by/2.0/" rel="nofollow" class="underline-offset-2 hover:text-white/60 hover:underline">CC BY 2.0</a>.
-        </p>
       </div>
     </footer>
 
