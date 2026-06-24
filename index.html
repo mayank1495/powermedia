@@ -304,8 +304,23 @@
       </section>
 
       <!-- ============ COVERAGE BAND ============ -->
-      <section class="container-x py-16 lg:py-24">
-        <div class="reveal-stage grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+      <section class="relative container-x py-16 lg:py-24">
+        <div
+          aria-hidden="true"
+          class="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-[82%]"
+        >
+          <div
+            class="absolute inset-0"
+            style="
+              background-image: radial-gradient(circle, rgba(1, 24, 33, 0.2) 1px, transparent 1.6px);
+              background-size: 24px 24px;
+              -webkit-mask-image: radial-gradient(58% 62% at 60% 72%, #000 0%, transparent 72%);
+              mask-image: radial-gradient(58% 62% at 60% 72%, #000 0%, transparent 72%);
+            "
+          ></div>
+          <div class="absolute bottom-6 left-[60%] h-72 w-[38rem] max-w-[80%] -translate-x-1/2 rounded-full bg-brand/[0.08] blur-3xl"></div>
+        </div>
+        <div class="reveal-stage relative z-10 grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <div data-reveal class="relative order-2 lg:order-1">
             <div class="relative overflow-hidden rounded-xl border border-night/10 bg-night p-8 sm:p-10">
               <img
