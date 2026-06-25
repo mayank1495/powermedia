@@ -526,9 +526,9 @@
                 <svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3 5 5.6V11c0 4.4 2.9 7.4 7 8.8 4.1-1.4 7-4.4 7-8.8V5.6L12 3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m9 11.5 2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
               <p class="font-mono text-[0.7rem] uppercase tracking-[0.22em] text-brand">Step 04</p>
-              <h3 class="mt-1.5 font-display text-xl font-light tracking-tight text-ink">Delivered, with proof</h3>
-              <p class="mt-2 max-w-md text-ink-muted">It reaches the recipient safely and you get a signed confirmation — so you always know it landed.</p>
-              <span class="mt-3 inline-flex items-center gap-1.5 rounded-full bg-brand-soft px-2.5 py-1 font-mono text-[0.7rem] text-brand-ink">Signed e-POD</span>
+              <h3 class="mt-1.5 font-display text-xl font-light tracking-tight text-ink">Delivered to the door</h3>
+              <p class="mt-2 max-w-md text-ink-muted">It reaches the recipient quickly and in one piece — handled with the same care from the first mile to the last.</p>
+              <span class="mt-3 inline-flex items-center gap-1.5 rounded-full bg-brand-soft px-2.5 py-1 font-mono text-[0.7rem] text-brand-ink">Handled door to door</span>
             </li>
           </ol>
         </div>
@@ -578,69 +578,107 @@
 
       <!-- ============ CONTACT ============ -->
       <section id="contact" class="container-x pb-24">
-        <div class="reveal-stage grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
-          <!-- Form -->
-          <div data-reveal class="rounded-xl border border-night/10 bg-white p-8 sm:p-10">
-            <h2 class="font-display text-[clamp(1.8rem,4vw,2.5rem)] font-light tracking-tightest text-ink">We're happy to hear from you</h2>
-            <p class="mt-3 text-ink-muted">Questions, quotes or a pickup? Send us a line and we'll get back fast.</p>
+        <div class="reveal-stage overflow-hidden rounded-2xl border border-night/10 bg-white shadow-float">
+          <div class="grid lg:grid-cols-[0.92fr_1.08fr]">
+            <!-- Info rail -->
+            <div data-reveal class="relative overflow-hidden bg-night p-8 text-white sm:p-10 lg:p-12">
+              <img
+                src="resources/img/world-dots.svg"
+                alt=""
+                aria-hidden="true"
+                class="pointer-events-none absolute inset-0 h-full w-full object-cover object-[58%_42%] opacity-[0.14]"
+                style="-webkit-mask-image: radial-gradient(120% 120% at 80% 0%, #000, transparent 78%); mask-image: radial-gradient(120% 120% at 80% 0%, #000, transparent 78%)"
+              />
+              <div class="pointer-events-none absolute -left-16 bottom-0 h-72 w-72 rounded-full bg-brand/15 blur-3xl"></div>
+              <div class="relative flex h-full flex-col">
+                <h2 class="font-display text-[clamp(1.9rem,4vw,2.6rem)] font-light leading-[1.0] tracking-tightest">
+                  Let's get it moving
+                </h2>
+                <p class="mt-4 max-w-sm text-white/65">
+                  Tell us what you're shipping and where it's headed. We'll line up the fastest lane and get back to you with a price — usually the same day.
+                </p>
 
-            <form method="post" action="#" class="mt-8 grid gap-4 sm:grid-cols-2">
-              <div class="sm:col-span-1">
-                <label for="name" class="mb-1.5 block text-sm font-semibold text-ink">Name</label>
-                <input id="name" name="name" type="text" required placeholder="Your name" class="field" />
-              </div>
-              <div class="sm:col-span-1">
-                <label for="email" class="mb-1.5 block text-sm font-semibold text-ink">Email</label>
-                <input id="email" name="email" type="email" required placeholder="you@email.com" class="field" />
-              </div>
-              <div class="sm:col-span-2">
-                <label for="find-us" class="mb-1.5 block text-sm font-semibold text-ink">How did you find us?</label>
-                <select id="find-us" name="find-us" class="field">
-                  <option value="friends">Friends</option>
-                  <option value="search">Search engine</option>
-                  <option value="ad">Advertisement</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-              <div class="sm:col-span-2">
-                <label for="message" class="mb-1.5 block text-sm font-semibold text-ink">Drop us a line</label>
-                <textarea id="message" name="message" rows="4" placeholder="Tell us what you'd like to ship…" class="field resize-none"></textarea>
-              </div>
-              <div class="sm:col-span-2">
-                <button type="submit" class="btn-primary w-full sm:w-auto">Send it</button>
-              </div>
-            </form>
-          </div>
+                <div class="mt-9 space-y-1.5">
+                  <a href="tel:+919831060389" class="group -mx-3 flex items-center gap-4 rounded-xl px-3 py-3 transition hover:bg-white/[0.06]">
+                    <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-white/[0.07] text-brand ring-1 ring-white/10">
+                      <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 4h3l1.5 4-2 1.5a11 11 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A16 16 0 0 1 4.5 6.2 2 2 0 0 1 6.5 4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                    </span>
+                    <span class="min-w-0">
+                      <span class="block text-xs uppercase tracking-[0.14em] text-white/45">Call or WhatsApp</span>
+                      <span class="block font-medium text-white group-hover:text-brand">+91 98310 60389</span>
+                    </span>
+                  </a>
+                  <a href="mailto:power_media007@yahoo.co.in" class="group -mx-3 flex items-center gap-4 rounded-xl px-3 py-3 transition hover:bg-white/[0.06]">
+                    <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-white/[0.07] text-brand ring-1 ring-white/10">
+                      <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                    </span>
+                    <span class="min-w-0">
+                      <span class="block text-xs uppercase tracking-[0.14em] text-white/45">Email</span>
+                      <span class="block break-all font-medium text-white group-hover:text-brand">power_media007@yahoo.co.in</span>
+                    </span>
+                  </a>
+                  <a href="https://maps.google.com/?q=Power+Media+Systems+and+Services+12A+Netaji+Subhas+Rd+Kolkata+700001" target="_blank" rel="noopener" class="group -mx-3 flex items-center gap-4 rounded-xl px-3 py-3 transition hover:bg-white/[0.06]">
+                    <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-white/[0.07] text-brand ring-1 ring-white/10">
+                      <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.6"/></svg>
+                    </span>
+                    <span class="min-w-0">
+                      <span class="block text-xs uppercase tracking-[0.14em] text-white/45">Visit the office</span>
+                      <span class="block font-medium text-white group-hover:text-brand">12A Netaji Subhas Rd, B.B.D. Bagh, Kolkata 700001</span>
+                    </span>
+                  </a>
+                </div>
 
-          <!-- Details -->
-          <div data-reveal style="--reveal-delay: 120ms" class="flex flex-col gap-4">
-            <div class="rounded-xl bg-night p-8 text-white">
-              <h3 class="font-display text-xl font-light tracking-tight">Power Media Systems &amp; Services</h3>
-              <ul class="mt-6 space-y-5 text-white/80">
-                <li class="flex items-start gap-3">
-                  <svg class="mt-0.5 h-5 w-5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.6"/></svg>
-                  <span>Ground Floor, Room-1, 12A,<br />Netaji Subhas Rd, beside Coal India,<br />Murgighata, B.B.D. Bagh,<br />Kolkata, West Bengal 700001</span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <svg class="mt-0.5 h-5 w-5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 4h3l1.5 4-2 1.5a11 11 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A16 16 0 0 1 4.5 6.2 2 2 0 0 1 6.5 4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-                  <span><span class="text-white/55">Manoj Agarwal</span><br /><a href="tel:+919831060389" class="font-semibold text-white hover:text-brand">+91 98310 60389</a></span>
-                </li>
-                <li class="flex items-start gap-3">
-                  <svg class="mt-0.5 h-5 w-5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-                  <a href="mailto:power_media007@yahoo.co.in" class="break-all font-semibold text-white hover:text-brand">power_media007@yahoo.co.in</a>
-                </li>
-              </ul>
-              <a href="https://share.google/KVJNfORgkX5ocmH4G" target="_blank" rel="noopener" class="mt-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-white/15">
-                <svg class="h-4 w-4 text-brand" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.6"/></svg>
-                Find &amp; review us on Google
-              </a>
+                <div class="mt-auto flex flex-wrap items-center gap-3 border-t border-white/10 pt-7">
+                  <span class="inline-flex items-center gap-2 rounded-full bg-white/[0.07] px-3.5 py-2 text-sm text-white/80 ring-1 ring-white/10">
+                    <svg class="h-4 w-4 text-brand" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                    Open 365 days a year
+                  </span>
+                  <a href="https://share.google/KVJNfORgkX5ocmH4G" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full bg-white/[0.07] px-3.5 py-2 text-sm font-medium text-white ring-1 ring-white/10 transition hover:bg-white/[0.12]">
+                    <svg class="h-4 w-4 text-brand" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.6"/></svg>
+                    Review us on Google
+                  </a>
+                </div>
+              </div>
             </div>
-            <div class="flex items-center gap-4 rounded-xl bg-brand-soft p-8 text-ink">
-              <svg class="h-10 w-10 shrink-0 text-brand-ink" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-              <div>
-                <p class="font-display text-lg font-light">Open 365 days a year</p>
-                <p class="text-ink-muted">We're up the whole year to meet your courier needs.</p>
-              </div>
+
+            <!-- Enquiry form -->
+            <div data-reveal style="--reveal-delay: 120ms" class="p-8 sm:p-10 lg:p-12">
+              <h3 class="font-display text-2xl font-light tracking-tight text-ink">Send an enquiry</h3>
+              <p class="mt-2 text-ink-muted">Share a few details and we'll take it from there.</p>
+
+              <form method="post" action="#" class="mt-8 grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label for="name" class="mb-1.5 block text-sm font-medium text-ink">Name</label>
+                  <input id="name" name="name" type="text" required placeholder="Your name" class="field" />
+                </div>
+                <div>
+                  <label for="phone" class="mb-1.5 block text-sm font-medium text-ink">Phone</label>
+                  <input id="phone" name="phone" type="tel" required placeholder="+91 …" class="field" />
+                </div>
+                <div class="sm:col-span-2">
+                  <label for="email" class="mb-1.5 block text-sm font-medium text-ink">Email</label>
+                  <input id="email" name="email" type="email" placeholder="you@email.com" class="field" />
+                </div>
+                <div class="sm:col-span-2">
+                  <label for="service" class="mb-1.5 block text-sm font-medium text-ink">What do you need?</label>
+                  <select id="service" name="service" class="field">
+                    <option value="air">Air freight</option>
+                    <option value="road">Road freight</option>
+                    <option value="express">Express TDD (1-day)</option>
+                    <option value="pickup">Door-to-door pickup</option>
+                    <option value="international">International shipment</option>
+                    <option value="other">Something else</option>
+                  </select>
+                </div>
+                <div class="sm:col-span-2">
+                  <label for="message" class="mb-1.5 block text-sm font-medium text-ink">Details</label>
+                  <textarea id="message" name="message" rows="4" placeholder="What's moving, from where, and to where?" class="field resize-none"></textarea>
+                </div>
+                <div class="sm:col-span-2 flex flex-wrap items-center gap-x-4 gap-y-2">
+                  <button type="submit" class="btn-primary">Send enquiry</button>
+                  <span class="text-sm text-ink-muted">or call us directly — we usually reply the same day.</span>
+                </div>
+              </form>
             </div>
           </div>
         </div>
